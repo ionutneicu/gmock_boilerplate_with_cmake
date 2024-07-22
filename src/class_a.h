@@ -1,6 +1,6 @@
 #pragma once
 class ClassA {
 public:
-    virtual int add(int a, int b) { return a+b; }
+    virtual int my_add(int a, int b) { return a+b; }
 };
 

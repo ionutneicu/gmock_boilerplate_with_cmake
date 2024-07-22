@@ -3,5 +3,5 @@
 
 class MockClassA : public ClassA {
 public:
-    MOCK_METHOD(int, add, (int a, int b), (override));
+    MOCK_METHOD(int, my_add, (int a, int b), (override));
 };

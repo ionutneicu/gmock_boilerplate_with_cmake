@@ -1,13 +1,15 @@
-FROM debian:12-slim
+FROM debian:10-slim
 RUN apt-get update
-RUN apt-get -y install cmake build-essential libgtest-dev libgmock-dev
+RUN apt-get -y install cmake build-essential pkg-config git
 RUN mkdir project
 WORKDIR project
-RUN pwd
 RUN mkdir build_gtest
 WORKDIR ./build_gtest
-RUN pwd
-RUN cmake /usr/src/googletest 
+RUN git clone https://github.com/google/googletest.git
+WORKDIR ./googletest
+RUN git checkout tags/v1.15.0
+WORKDIR ..
+RUN cmake googletest 
 RUN make
 RUN make install
 RUN cat /usr/local/lib/cmake/GTest/GTestTargets.cmake
